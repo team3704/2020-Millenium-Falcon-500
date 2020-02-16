@@ -18,7 +18,7 @@ public class ShooterSubsystem extends PIDSubsystem {
    */
   public ShooterSubsystem() {
     // Intert a subsystem name and PID values here
-    super("SubsystemName", 1, 2, 3);
+    super("ShooterSubsystem", 1, 2, 3);
     // Use these to get going:
     // setSetpoint() - Sets where the PID controller should move the system
     // to

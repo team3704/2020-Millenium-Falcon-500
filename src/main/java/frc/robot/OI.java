@@ -7,40 +7,66 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.IntakeRetractCommand;
+import frc.robot.commands.MagazineCommand;
+import frc.robot.commands.cpDeployCommand;
+import frc.robot.commands.cpRetractCommand;
+import frc.robot.commands.Arcade_ShiftCommand;
+import frc.robot.commands.IntakeDeployCommand;
+import frc.robot.commands.IntakeMotorCommand;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+//import edu.wpi.first.wpilibj.XboxController;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-  //// CREATING BUTTONS
-  // One type of button is a joystick button which is any button on a
-  //// joystick.
-  // You create one by telling it which joystick it's on and which button
-  // number it is.
   
-  public XboxController controller = new XboxController(RobotMap.XboxControllerPort);
+  // Controllers
+  public Joystick xbox;
+
+  //Xbox Controller Buttons
+  public JoystickButton leftBumper;       //port 5
+  public JoystickButton rightBumper;      //port 6
+  public JoystickButton buttonA;          //port 1
+  public JoystickButton buttonB;          //port 2
+  public JoystickButton buttonX;          //port 3
+  public JoystickButton buttonY;          //port 4
+  public JoystickButton buttonStickLeft;  //port 9
+  public JoystickButton buttonStickRight; //port 10
+  public JoystickButton buttonBack;       //port7
+  public JoystickButton buttonStart;      //port 8
+
+// new comment
+
+  public OI()  {
   
-  // Button button = new JoystickButton(stick, buttonNumber);
+      xbox = new Joystick(RobotMap.XboxControllerPort);
 
-  // There are a few additional built in buttons you can use. Additionally,
-  // by subclassing Button you can create custom triggers and bind those to
-  // commands the same as any other Button.
+      leftBumper = new JoystickButton(xbox, 5);
+      leftBumper.whenPressed(new Arcade_ShiftCommand(Value.kReverse));
+      leftBumper.whenReleased(new Arcade_ShiftCommand(Value.kForward));
 
-  //// TRIGGERING COMMANDS WITH BUTTONS
-  // Once you have a button, it's trivial to bind it to a button in one of
-  // three ways:
+      rightBumper = new JoystickButton(xbox, 6);
+      rightBumper.whileHeld(new IntakeMotorCommand());
+      rightBumper.whileHeld(new MagazineCommand());
 
-  // Start the command when the button is pressed and let it run the command
-  // until it is finished as determined by it's isFinished method.
-  // button.whenPressed(new ExampleCommand());
+      
+      buttonA = new JoystickButton(xbox, 1);
+      buttonA.whenPressed(new IntakeDeployCommand());
 
-  // Run the command while the button is being held down and interrupt it once
-  // the button is released.
-  // button.whileHeld(new ExampleCommand());
+      buttonB = new JoystickButton(xbox, 2);
+      buttonB.whenPressed(new IntakeRetractCommand());
 
-  // Start the command when the button is released and let it run the command
-  // until it is finished as determined by it's isFinished method.
-  // button.whenReleased(new ExampleCommand());
+      buttonX = new JoystickButton(xbox, 3);
+      buttonX.whenPressed(new cpDeployCommand());
+
+      buttonY = new JoystickButton(xbox, 4);;
+      buttonY.whenPressed(new cpRetractCommand());
+    
+  }
+
 }

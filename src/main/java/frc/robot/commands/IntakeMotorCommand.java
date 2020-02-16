@@ -7,14 +7,13 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ManualArcadeDriveCommand extends Command {
-  public ManualArcadeDriveCommand() {
+public class IntakeMotorCommand extends Command {
+  public IntakeMotorCommand() {
     // Use requires() here to declare subsystem dependencies
-    //requires(Robot.arcadeDriveSubsystem);
+   requires(Robot.intakeSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -25,12 +24,7 @@ public class ManualArcadeDriveCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-    double move = -1* Robot.oi.xbox.getY(Hand.kLeft);
-    double turn = Robot.oi.xbox.getX(Hand.kLeft);
-    Robot.arcadeDriveSubsystem.manualArcadeDrive(move, turn);
-   // boolean boost =
-  
+    Robot.intakeSubsystem.setIntakeSpeed(0.5);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -42,12 +36,13 @@ public class ManualArcadeDriveCommand extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.arcadeDriveSubsystem.stop();
+    Robot.intakeSubsystem.setIntakeSpeed(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

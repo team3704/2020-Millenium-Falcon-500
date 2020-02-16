@@ -28,20 +28,30 @@ public class RobotMap {
   
   // Motor Port Identifers
   public static int leftMasterPort = 0;
-  public static int leftSlave1Port = 1;
+  public static int leftSlavePort = 1;
   public static int rightMasterPort = 2;
-  public static int righSlave1Port = 3;
+  public static int righSlavePort = 3;
 
   public static int intakePort = 4;
 
-  public static int magazinePort = 5;
+  public static int firstMagazinePort = 5;
+  public static int secondMagazinePort = 6;
 
-  public static int loaderPort = 6;
+  public static int loaderPort = 7;
 
-  public static int shooterMasterPort = 7;
-  public static int shooterSlavePort = 8;
+  public static int shooterMasterPort = 8;
+  public static int shooterSlavePort = 9;
 
-  public static int controlPanelPort = 9;
+  public static int controlPanelPort = 10;
 
-  public static int climberPort = 10;
+  public static int climberPort = 11;
+
+  //Solenoid Port Identifers
+  public static int intakeDeploySolenoidPort = 3;
+  public static int intakeRetractSolenoidPort = 2;
+  public static int GBSlowSolenoidPort = 0;
+  public static int GBFastSolenoidPort = 1;
+  public static int controlPanelDeploySolenoidPort = 6;
+  public static int controlPanelRetractSolenoidPort = 7;
+  public static int climbSolenoidPort = 8;
 }

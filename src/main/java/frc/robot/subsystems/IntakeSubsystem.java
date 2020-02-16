@@ -8,6 +8,8 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
@@ -21,6 +23,21 @@ public class IntakeSubsystem extends Subsystem {
   // Instantiate new motor controller objects
   public WPI_TalonSRX intakemotor = new WPI_TalonSRX(RobotMap.intakePort);
 
+  // Instantiate new Solenoid for pneumatic cylinder
+  public DoubleSolenoid intakeSolenoid = new DoubleSolenoid(RobotMap.intakeDeploySolenoidPort,RobotMap.intakeRetractSolenoidPort);
+
+  public void deployPiston() {
+  intakeSolenoid.set(Value.kForward);
+  }
+
+  public void retractPiston() {
+  intakeSolenoid.set(Value.kReverse);
+  }
+
+  public void setIntakeSpeed(double speed){
+    intakemotor.set(speed);
+  }
+ 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

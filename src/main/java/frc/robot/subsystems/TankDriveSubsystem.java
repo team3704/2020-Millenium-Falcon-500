@@ -12,7 +12,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
 import frc.robot.commands.ManualTankDriveCommand;
-/**
+/*
  * Add your docs here.
  */
 public class TankDriveSubsystem extends Subsystem {
@@ -21,9 +21,9 @@ public class TankDriveSubsystem extends Subsystem {
 
     // Instantiate new motor controller objects
     public WPI_TalonSRX leftMaster = new WPI_TalonSRX(RobotMap.leftMasterPort);
-    public WPI_TalonSRX leftSlave1 = new WPI_TalonSRX(RobotMap.leftSlave1Port);
+    public WPI_TalonSRX leftSlave1 = new WPI_TalonSRX(RobotMap.leftSlavePort);
     public WPI_TalonSRX rightMaster = new WPI_TalonSRX(RobotMap.rightMasterPort);
-    public WPI_TalonSRX rightSlave1 = new WPI_TalonSRX(RobotMap.righSlave1Port);
+    public WPI_TalonSRX rightSlave1 = new WPI_TalonSRX(RobotMap.righSlavePort);
 
     // Technique to combine motors into differential drive
     // SpeedControllerGroup leftMotorGroup = new SpeedControllerGroup(leftMaster, leftSlave1, leftSlave2);
