@@ -27,8 +27,8 @@ public class ManualTankDriveCommand extends Command {
   protected void execute() {
 
 
-   // double leftside = -1* Robot.oi.controller.getY(Hand.kLeft);
-   // double rightside = -1* Robot.oi.controller.getY(Hand.kRight);
+   // double leftside = -1* Robot.oi.xbox.getY(Hand.kLeft);
+   // double rightside = -1* Robot.oi.xbox.getY(Hand.kRight);
    // Robot.tankDriveSubsystem.manualTankDrive(leftside, rightside);
 
 
