@@ -10,7 +10,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.IntakeRetractCommand;
+import frc.robot.commands.IntakeReverseCommand;
 import frc.robot.commands.MagazineCommand;
+import frc.robot.commands.MagazineReverseCommand;
 import frc.robot.commands.cpDeployCommand;
 import frc.robot.commands.cpRetractCommand;
 import frc.robot.commands.Arcade_ShiftCommand;
@@ -68,7 +70,10 @@ public class OI {
       rightBumper.whileHeld(new IntakeMotorCommand());
       rightBumper.whileHeld(new MagazineCommand());
 
-      
+      leftBumper = new JoystickButton(xbox, 5);
+      leftBumper.whileHeld(new IntakeReverseCommand());
+      leftBumper.whileHeld(new MagazineReverseCommand());
+
       buttonA = new JoystickButton(xbox, 1);
       buttonA.whenPressed(new IntakeDeployCommand());
 

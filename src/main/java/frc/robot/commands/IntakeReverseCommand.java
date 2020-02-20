@@ -10,10 +10,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class MagazineCommand extends Command {
-  public MagazineCommand() {
+public class IntakeReverseCommand extends Command {
+  public IntakeReverseCommand() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.magazineSubsystem);
+    requires(Robot.intakeSubsystem);
   }
 
   // Called just before this Command runs the first time
@@ -24,7 +24,7 @@ public class MagazineCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.magazineSubsystem.setMagazineSpeed(0.25);
+    Robot.intakeSubsystem.setIntakeSpeed(-0.5);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -36,7 +36,7 @@ public class MagazineCommand extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.magazineSubsystem.setMagazineSpeed(0);
+    Robot.intakeSubsystem.setIntakeSpeed(0);
   }
 
   // Called when another command which requires one or more of the same
