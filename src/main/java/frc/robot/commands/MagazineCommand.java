@@ -25,7 +25,7 @@ public class MagazineCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.magazineSubsystem.setMagazineSpeed(0.5);
+    Robot.magazineSubsystem.setMagazineSpeed(0.25);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -44,5 +44,6 @@ public class MagazineCommand extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

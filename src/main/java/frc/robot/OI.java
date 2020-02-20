@@ -27,6 +27,7 @@ public class OI {
   
   // Controllers
   public Joystick xbox;
+  public Joystick joystick;
 
   //Xbox Controller Buttons
   public JoystickButton leftBumper;       //port 5
@@ -40,15 +41,28 @@ public class OI {
   public JoystickButton buttonBack;       //port7
   public JoystickButton buttonStart;      //port 8
 
+    //Joystick Controller Buttons
+    public JoystickButton button1;
+    public JoystickButton button2;
+    public JoystickButton button3;
+    public JoystickButton button4;
+    public JoystickButton button5;
+    public JoystickButton button6;
+    public JoystickButton button7;
+    public JoystickButton button8;
+    public JoystickButton button9;
+    public JoystickButton button10;
+
 // new comment
 
   public OI()  {
   
       xbox = new Joystick(RobotMap.XboxControllerPort);
+      joystick = new Joystick(RobotMap.JoystickPort);
 
-      leftBumper = new JoystickButton(xbox, 5);
-      leftBumper.whenPressed(new Arcade_ShiftCommand(Value.kReverse));
-      leftBumper.whenReleased(new Arcade_ShiftCommand(Value.kForward));
+      button1 = new JoystickButton(joystick, 1);
+      button1.whenPressed(new Arcade_ShiftCommand(Value.kReverse));
+      button1.whenReleased(new Arcade_ShiftCommand(Value.kForward));
 
       rightBumper = new JoystickButton(xbox, 6);
       rightBumper.whileHeld(new IntakeMotorCommand());

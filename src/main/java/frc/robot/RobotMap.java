@@ -24,7 +24,8 @@ public class RobotMap {
   public static int wheelDiameter = 8;
 
   // Controller Port
-  public static int XboxControllerPort = 0;
+  public static int XboxControllerPort = 1;
+  public static int JoystickPort = 0;
   
   // Motor Port Identifers
   public static int leftMasterPort = 0;

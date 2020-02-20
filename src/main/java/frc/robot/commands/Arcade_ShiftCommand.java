@@ -8,7 +8,6 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
@@ -31,10 +30,11 @@ public class Arcade_ShiftCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+
     Robot.arcadeDriveSubsystem.shift(value);
 
-    double move = -1* Robot.oi.xbox.getY(Hand.kLeft);
-    double turn = Robot.oi.xbox.getX(Hand.kLeft);
+    double move = -1* Robot.oi.joystick.getY();
+    double turn = Robot.oi.joystick.getX();
     Robot.arcadeDriveSubsystem.manualArcadeDrive(move, turn);
 
     
