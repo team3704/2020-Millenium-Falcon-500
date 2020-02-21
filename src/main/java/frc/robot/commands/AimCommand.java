@@ -27,41 +27,44 @@ public class AimCommand extends Command {
   @Override
   protected void execute() {
 
-double KpAim = -0.1;
-double KpDistance = -0.1;
-double min_aim_command = 0.05;
+  // Proportional constants to tune aiming performance
+  double KpAim = -0.1;
+  double KpDistance = -0.1;
+  double min_aim_command = 0.05;
 
-//std::shared_ptr<NetworkTable> table = NetworkTable::GetTable("limelight");
-//float tx = table->GetNumber("tx");
-//float ty = table->GetNumber("ty");
+  // Limelight variables
+  double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
+  double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
+  double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
+  //double ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
 
-//double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
-double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
-double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
-//double ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
+  boolean rightTrigger = Robot.oi.xbox.getRawButton(12);
 
-boolean rightTrigger = Robot.oi.xbox.getRawButton(12);
-
-
-if (rightTrigger == true)
-{
+  if (rightTrigger == true)
+  {
   double heading_error = -tx;
   double distance_error = -ty;
   double steering_adjust = 0.0;
+  double desired_distance = -10; 
 
-  if (tx > 1.0)
-  {
-    steering_adjust = KpAim*heading_error - min_aim_command;
-  }
-  else if (tx < 1.0)
-  {
-    steering_adjust = KpAim*heading_error + min_aim_command;
-  }
+    if (tv < 1)
+    {
+      // We don't see the target, seek for the target by spinning in place at a safe speed.
+      steering_adjust = 0.3;
+    }
+    else if (tx > 1.0)
+    {
+      steering_adjust = KpAim*heading_error - min_aim_command;
+    }
+    else if (tx < 1.0)
+    {
+      steering_adjust = KpAim*heading_error + min_aim_command;
+    }
 
-  double distance_adjust = KpDistance * distance_error;
-  double move = distance_adjust;
-  double turn = steering_adjust;
-  Robot.arcadeDriveSubsystem.manualArcadeDrive(move, turn);
+
+  double distance_adjust = KpDistance * (desired_distance+distance_error);
+
+  Robot.arcadeDriveSubsystem.manualArcadeDrive(distance_adjust, steering_adjust);
   //left_command += steering_adjust + distance_adjust;
   //right_command -= steering_adjust + distance_adjust;
 }
