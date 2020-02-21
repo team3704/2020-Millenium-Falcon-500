@@ -55,4 +55,5 @@ public class RobotMap {
   public static int controlPanelDeploySolenoidPort = 6;
   public static int controlPanelRetractSolenoidPort = 7;
   public static int climbSolenoidPort = 8;
+
 }

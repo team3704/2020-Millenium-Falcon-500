@@ -14,6 +14,9 @@ import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
+
+
+
 /**
  * Add your docs here.
  */
@@ -25,6 +28,7 @@ public class ControlPanelSubsystem extends Subsystem {
 
   // Instantiate new Solenoid for pneumatic cylinder
   public DoubleSolenoid controlPanelSolenoid = new DoubleSolenoid(RobotMap.controlPanelDeploySolenoidPort,RobotMap.controlPanelRetractSolenoidPort);
+
 
   public void deployPiston() {
   controlPanelSolenoid.set(Value.kForward);
@@ -38,5 +42,6 @@ public class ControlPanelSubsystem extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+ 
   }
 }
