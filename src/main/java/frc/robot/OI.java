@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.XboxController;
 
 import frc.robot.commands.IntakeRetractCommand;
 import frc.robot.commands.IntakeReverseCommand;
+import frc.robot.commands.LoaderCommand;
 import frc.robot.commands.MagazineCommand;
 import frc.robot.commands.MagazineReverseCommand;
 import frc.robot.commands.ShooterCommandGroup;
@@ -105,6 +106,7 @@ public class OI {
       this.rhTrigger.whenActive(new ShooterCommandGroup());
 
       this.lhTrigger = new XboxTrigger(this.xboxtriggers, Hand.kLeft);
+      this.lhTrigger.whileActive(new LoaderCommand());
 
       //buttonDPad_Left = new JoystickButton(xbox, 15);
       //buttonDPad_Left.whenPressed(new GoToColorCommand());

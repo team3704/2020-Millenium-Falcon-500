@@ -8,6 +8,8 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
+
 
 public class ShooterCommandGroup extends CommandGroup {
   
@@ -20,11 +22,12 @@ public class ShooterCommandGroup extends CommandGroup {
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addParallel(new AimCommand());
-    addSequential(new ShootCommand());
-    
-    addParallel(new LoaderCommand());
-    addSequential(new MagazineCommand());
+
+    addSequential(new AimCommand());
+    addParallel(new ShootCommand(), 8); 
+    addSequential(new WaitCommand(3));   
+    addSequential(new LoaderCommand(), 5);
+    addSequential(new MagazineCommand(), 5);
 
 
 

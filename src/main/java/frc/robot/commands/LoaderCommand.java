@@ -13,7 +13,7 @@ import frc.robot.Robot;
 public class LoaderCommand extends Command {
   public LoaderCommand() {
     // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+    requires(Robot.loaderSubsystem);
   }
 
   // Called just before this Command runs the first time
