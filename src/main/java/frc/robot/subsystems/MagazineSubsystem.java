@@ -16,21 +16,16 @@ import frc.robot.RobotMap;
  * Add your docs here.
  */
 public class MagazineSubsystem extends Subsystem {
-
-public WPI_TalonSRX magazineMotor1 = new WPI_TalonSRX(RobotMap.magazinePort);
-
-public MagazineSubsystem() {
-  // Point slaves to masters
-}
-
-public void setMagazineSpeed(double speed){
-  magazineMotor1.set(speed);
-  //motor goes at half speed in magazineCommand
-}
-
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  // int numOfLIs = 1; //self evidently
+
+  // Instantiate new motor controller objects
+  public WPI_TalonSRX magazineMotor = new WPI_TalonSRX(RobotMap.magazinePort);
+
+  public void setMagazineSpeed(double speed){ 
+    magazineMotor.set(speed);
+  }
+
 
   @Override
   public void initDefaultCommand() {

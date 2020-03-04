@@ -68,7 +68,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 //    * parameter. The device will be automatically initialized with default 
 //    * parameters.
 //    */
-//   //                       private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+//   private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
 
 //   /**
 //    * A Rev Color Match object is used to register and detect known colors. This can 
@@ -112,22 +112,22 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 //   }
 
 //   public static double CalculateDistance(final Color color1, final Color color2) {
-//     double redDiff = color1.red - color2.red;
-//     double greenDiff = color1.green - color2.green;
-//     double blueDiff = color1.blue - color2.blue;
-//     return Math.sqrt((redDiff*redDiff + greenDiff*greenDiff + blueDiff*blueDiff)/2);
+//   double redDiff = color1.red - color2.red;
+//   double greenDiff = color1.green - color2.green;
+//   double blueDiff = color1.blue - color2.blue;
+//   return Math.sqrt((redDiff*redDiff + greenDiff*greenDiff + blueDiff*blueDiff)/2);
   
 
-//   // private final I2C.Port i2cPort = I2C.Port.kOnboard;
+//   private final I2C.Port i2cPort = I2C.Port.kOnboard;
 
-//   // private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
+//   private final ColorSensorV3 m_colorSensor = new ColorSensorV3(i2cPort);
 
-//   // private final ColorMatch m_colorMatcher = new ColorMatch();
+//   private final ColorMatch m_colorMatcher = new ColorMatch();
 
-//   // private final Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
-//   // private final Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
-//   // private final Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
-//   // private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
+//   private final Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
+//   private final Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
+//   private final Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
+//   private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
 
     
 //      // Open Smart Dashboard or Shuffleboard to see the color detected by the 

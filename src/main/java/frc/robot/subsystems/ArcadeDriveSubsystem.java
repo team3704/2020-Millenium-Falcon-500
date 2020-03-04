@@ -47,7 +47,6 @@ public class ArcadeDriveSubsystem extends Subsystem {
 
       drive = new DifferentialDrive(leftMaster, rightMaster);
       drive.setSafetyEnabled(false);
-
   }
 
   // Add manualArcadeDrive() method
@@ -59,7 +58,6 @@ public class ArcadeDriveSubsystem extends Subsystem {
     if(turn > 0.25) move = .25;
     if(turn < -0.25) move = -.25;
 
-
     // Creates deadband for small joystick movements
     if (Math.abs(move) < 0.10) {
       move = 0;
@@ -68,13 +66,17 @@ public class ArcadeDriveSubsystem extends Subsystem {
       turn = 0;
     }
 
-    drive.arcadeDrive(move, turn); //nice
+    drive.arcadeDrive(move, turn); 
 
   }
 
-  public void stop(){
-    drive.arcadeDrive(0, 0);
-  }
+    public void stop(){
+          drive.arcadeDrive(0, 0);
+    }
+
+    public void shift(Value value){
+         shiftSolenoid.set(value);
+    }
 
   @Override
   public void initDefaultCommand() {
@@ -82,8 +84,6 @@ public class ArcadeDriveSubsystem extends Subsystem {
     setDefaultCommand(new Arcade_ShiftCommand(Value.kForward));
   }
 
-  public void shift(Value value){
-	shiftSolenoid.set(value);
-  }
+
   
 }
