@@ -24,7 +24,7 @@ public class IntakeReverseCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.intakeSubsystem.setIntakeSpeed(-0.25);
+    Robot.intakeSubsystem.setIntakeSpeed(0.25);
   }
 
   // Make this return true when this Command no longer needs to run execute()

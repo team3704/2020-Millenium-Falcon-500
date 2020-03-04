@@ -24,8 +24,8 @@ public class RobotMap {
   public static int wheelDiameter = 8;
 
   // Controller Port
-  public static int XboxControllerPort = 0;
-  public static int JoystickPort = 1;
+  public static int XboxControllerPort = 1;
+  public static int JoystickPort = 0;
   
   // Motor Port Identifers
   public static int leftMasterPort = 0;
@@ -46,12 +46,11 @@ public class RobotMap {
   public static int GBFastSolenoidPort = 1;
   public static int intakeRetractSolenoidPort = 2;
   public static int intakeDeploySolenoidPort = 3;
-  public static int controlPanelDeploySolenoidPort = 6;
-  public static int controlPanelRetractSolenoidPort = 7;
-  public static int climbSolenoidPort = 8;
+  public static int controlPanelDeploySolenoidPort = 4;
+  public static int controlPanelRetractSolenoidPort = 5;
 
   // Limit Switch
-  public static int limitSwitchPort = 1;
+  public static int limitSwitchPort = 0;
 
 
   //public static int button_dPad_left = 16;

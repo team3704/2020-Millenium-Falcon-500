@@ -8,7 +8,8 @@
 package frc.robot.subsystems;
 import frc.robot.RobotMap;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
@@ -35,13 +36,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
    //    here. Call these from Commands.
 
    // Instantiate new motor controller objects
-   public WPI_TalonSRX controlPanelMotor = new WPI_TalonSRX(RobotMap.controlPanelPort);
+   public VictorSPX controlPanelMotor = new VictorSPX(RobotMap.controlPanelPort);
 
    // Instantiate new Solenoid for pneumatic cylinder
    public DoubleSolenoid controlPanelSolenoid = new DoubleSolenoid(RobotMap.controlPanelDeploySolenoidPort,RobotMap.controlPanelRetractSolenoidPort);
 
    public void setCPMSpeed(double speed){
-        controlPanelMotor.set(speed);
+        controlPanelMotor.set(ControlMode.PercentOutput, speed);
    }
 
    public void deployPiston() {

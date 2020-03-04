@@ -7,7 +7,8 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
@@ -20,10 +21,10 @@ public class MagazineSubsystem extends Subsystem {
   // here. Call these from Commands.
 
   // Instantiate new motor controller objects
-  public WPI_TalonSRX magazineMotor = new WPI_TalonSRX(RobotMap.magazinePort);
+  public VictorSPX magazineMotor = new VictorSPX(RobotMap.magazinePort);
 
   public void setMagazineSpeed(double speed){ 
-    magazineMotor.set(speed);
+    magazineMotor.set(ControlMode.PercentOutput, speed);
   }
 
 

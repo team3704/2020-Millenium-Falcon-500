@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -25,8 +26,8 @@ public class ShooterSubsystem extends Subsystem {
 
   // Create constructor Function
   public void setShooterSpeed(double leftSpeed, double rightSpeed) {
-    shooterRight.set(rightSpeed);
-    shooterLeft.set(leftSpeed);
+    shooterRight.set(ControlMode.PercentOutput, rightSpeed);
+    shooterLeft.set(ControlMode.PercentOutput, leftSpeed);
   }
 
   @Override

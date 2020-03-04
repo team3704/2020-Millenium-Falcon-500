@@ -7,7 +7,8 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
@@ -20,10 +21,10 @@ public class LoaderSubsystem extends Subsystem {
   // here. Call these from Commands.
 
   // instantiate new motor controllers
-  public WPI_TalonSRX loaderMotor = new WPI_TalonSRX(RobotMap.loaderPort);
+  public VictorSPX loaderMotor = new VictorSPX(RobotMap.loaderPort);
 
   public void setLoaderSpeed(double speed){
-    loaderMotor.set(speed);
+    loaderMotor.set(ControlMode.PercentOutput, speed);
   }
 
 

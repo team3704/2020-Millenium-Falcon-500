@@ -53,8 +53,8 @@ public class ArcadeDriveSubsystem extends Subsystem {
   public void manualArcadeDrive(double move, double turn) {
 
     // Max speed for testing mode
-    if(move > 0.25) move = .25;
-    if(move < -0.25) move = -.25;
+    if(move > 0.5) move = .5;
+    if(move < -0.5) move = -.5;
     if(turn > 0.25) move = .25;
     if(turn < -0.25) move = -.25;
 

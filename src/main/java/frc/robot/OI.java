@@ -107,6 +107,7 @@ public class OI {
 
       this.lhTrigger = new XboxTrigger(this.xboxtriggers, Hand.kLeft);
       this.lhTrigger.whileActive(new LoaderCommand());
+      
 
       //buttonDPad_Left = new JoystickButton(xbox, 15);
       //buttonDPad_Left.whenPressed(new GoToColorCommand());

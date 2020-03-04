@@ -7,7 +7,8 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -21,7 +22,7 @@ public class IntakeSubsystem extends Subsystem {
   // here. Call these from Commands.
 
   // Instantiate new motor controller objects
-  public WPI_TalonSRX intakemotor = new WPI_TalonSRX(RobotMap.intakePort);
+  public VictorSPX intakemotor = new VictorSPX(RobotMap.intakePort);
 
   // Instantiate new Solenoid for pneumatic cylinder
   public DoubleSolenoid intakeSolenoid = new DoubleSolenoid(RobotMap.intakeDeploySolenoidPort,RobotMap.intakeRetractSolenoidPort);
@@ -35,7 +36,7 @@ public class IntakeSubsystem extends Subsystem {
   }
 
   public void setIntakeSpeed(double speed){
-      intakemotor.set(speed);
+      intakemotor.set(ControlMode.PercentOutput, speed);
   }
  
   @Override
