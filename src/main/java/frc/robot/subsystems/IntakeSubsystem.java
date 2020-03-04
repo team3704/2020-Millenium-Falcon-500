@@ -27,15 +27,15 @@ public class IntakeSubsystem extends Subsystem {
   public DoubleSolenoid intakeSolenoid = new DoubleSolenoid(RobotMap.intakeDeploySolenoidPort,RobotMap.intakeRetractSolenoidPort);
 
   public void deployPiston() {
-  intakeSolenoid.set(Value.kForward);
+      intakeSolenoid.set(Value.kForward);
   }
 
   public void retractPiston() {
-  intakeSolenoid.set(Value.kReverse);
+      intakeSolenoid.set(Value.kReverse);
   }
 
   public void setIntakeSpeed(double speed){
-    intakemotor.set(speed);
+      intakemotor.set(speed);
   }
  
   @Override

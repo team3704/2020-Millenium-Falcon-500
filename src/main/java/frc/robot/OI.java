@@ -46,13 +46,13 @@ public class OI {
   public JoystickButton buttonX;          //port 3
   public JoystickButton buttonY;          //port 4
   public JoystickButton buttonStickLeft;  //port 9
-  public JoystickButton buttonStickRight; //port  
+  public JoystickButton buttonStickRight; //port 10 
   public JoystickButton buttonBack;       //port 7
   public JoystickButton buttonStart;      //port 8
-  public JoystickButton buttonDPad_Left;  //port10
-  public JoystickButton buttonDPad_Right; //port12
-  public JoystickButton buttonDPad_Up;    //port13
-  public JoystickButton buttonDPad_Down;  //port14
+  //public JoystickButton buttonDPad_Left;  //port10
+  //public JoystickButton buttonDPad_Right; //port12
+  //public JoystickButton buttonDPad_Up;    //port13
+  //public JoystickButton buttonDPad_Down;  //port14
 
   //Xbox Triggers
   public XboxTrigger rhTrigger; //port 3
@@ -77,13 +77,7 @@ public class OI {
       joystick = new Joystick(RobotMap.JoystickPort);
       xboxtriggers = new XboxController(RobotMap.XboxControllerPort);
 
-      this.rhTrigger = new XboxTrigger(this.xboxtriggers, Hand.kRight);
-      this.lhTrigger = new XboxTrigger(this.xboxtriggers, Hand.kLeft);
-
-      button1 = new JoystickButton(joystick, 1);
-      button1.whenPressed(new Arcade_ShiftCommand(Value.kReverse));
-      button1.whenReleased(new Arcade_ShiftCommand(Value.kForward));
-
+      //Operator Buttons
       rightBumper = new JoystickButton(xbox, 6);
       rightBumper.whileHeld(new IntakeMotorCommand());
       rightBumper.whileHeld(new MagazineCommand());
@@ -103,30 +97,38 @@ public class OI {
 
       buttonY = new JoystickButton(xbox, 4);
       buttonY.whenPressed(new cpRetractCommand());
-      
-      buttonDPad_Left = new JoystickButton(xbox, 15);
-      //buttonDPad_Left.whenPressed(new GoToColorCommand());
-      //buttonDPad_Left.whenPressed(new GoToColorCommand());
-
-      buttonDPad_Right = new JoystickButton(xbox, 12);
-      //buttonDPad_Right.whenPressed(new GoToColorCommand());
-
-      buttonDPad_Up = new JoystickButton(xbox, 13);
-      //buttonDPad_Up.whenPressed(new GoToColorCommand());
-
-      buttonDPad_Down = new JoystickButton(xbox, 14);
-      //buttonDPad_Down.whenPressed(new GoToColorCommand());
 
       buttonBack = new JoystickButton(xbox, 7);
       buttonBack.whenPressed(new cpMotorTimedCommand(0));
+
+      this.rhTrigger = new XboxTrigger(this.xboxtriggers, Hand.kRight);
+      this.rhTrigger.whenActive(new ShooterCommandGroup());
+
+      this.lhTrigger = new XboxTrigger(this.xboxtriggers, Hand.kLeft);
+
+      //buttonDPad_Left = new JoystickButton(xbox, 15);
+      //buttonDPad_Left.whenPressed(new GoToColorCommand());
+      //buttonDPad_Left.whenPressed(new GoToColorCommand());
+
+      //buttonDPad_Right = new JoystickButton(xbox, 12);
+      //buttonDPad_Right.whenPressed(new GoToColorCommand());
+
+      //buttonDPad_Up = new JoystickButton(xbox, 13);
+      //buttonDPad_Up.whenPressed(new GoToColorCommand());
+
+      //buttonDPad_Down = new JoystickButton(xbox, 14);
+      //buttonDPad_Down.whenPressed(new GoToColorCommand());
+
+      //Driver Buttons
+      button1 = new JoystickButton(joystick, 1);
+      button1.whenPressed(new Arcade_ShiftCommand(Value.kReverse));
+      button1.whenReleased(new Arcade_ShiftCommand(Value.kForward));
 
       button6 = new JoystickButton(joystick, 6);
       button6.whileHeld(new ClimbCommand());
 
       button7 = new JoystickButton(joystick, 7);
       button7.whileHeld(new ClimbRetractCommand());
-
-      this.rhTrigger.whenActive(new ShooterCommandGroup());
 
   }
 

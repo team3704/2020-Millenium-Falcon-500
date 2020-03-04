@@ -12,8 +12,8 @@ import frc.robot.Robot;
 
 public class ShootCommand extends Command {
   public ShootCommand() {
+    // Use requires() here to declare subsystem dependencies
     requires(Robot.shooterSubsystem);
-    // eg. requires(chassis);
   }
 
   // Called just before this Command runs the first time
@@ -24,6 +24,7 @@ public class ShootCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    //To Set the speed of the shooter pass: setShooterSpeed(double leftSpeed, double rightSpeed)
     Robot.shooterSubsystem.setShooterSpeed(0.25, -0.25);
   }
 

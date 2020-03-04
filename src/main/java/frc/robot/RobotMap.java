@@ -32,18 +32,12 @@ public class RobotMap {
   public static int leftSlavePort = 1;
   public static int rightMasterPort = 2;
   public static int righSlavePort = 3;
-
   public static int intakePort = 4;
-
   public static int magazinePort = 5;
-
   public static int loaderPort = 6;
-
   public static int shooterRightPort = 7;
   public static int shooterLeftPort = 8;
-
   public static int controlPanelPort = 9;
-
   public static int climberPort1 = 10;
   public static int climberPort2 = 11;
 
@@ -60,7 +54,7 @@ public class RobotMap {
   public static int limitSwitchPort = 1;
 
 
-  public static int button_dPad_left = 16;
+  //public static int button_dPad_left = 16;
 }
 
 

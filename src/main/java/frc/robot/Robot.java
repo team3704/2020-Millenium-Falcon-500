@@ -20,7 +20,6 @@ import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.ColorMatchSubsystem;
 import frc.robot.subsystems.ColorSensorSubsystem;
 import frc.robot.subsystems.ControlPanelSubsystem;
-import frc.robot.subsystems.ControlPanelTurnSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LoaderSubsystem;
 import frc.robot.subsystems.MagazineSubsystem;
@@ -43,7 +42,6 @@ public class Robot extends TimedRobot {
   public static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
   public static ClimberSubsystem climberSubsystem = new ClimberSubsystem();
   public static ColorMatchSubsystem colorMatchSubsystem = new ColorMatchSubsystem();
-  public static ControlPanelTurnSubsystem controlPanelTurnSubsystem = new ControlPanelTurnSubsystem();
   public static ColorSensorSubsystem colorSensorSubsystem = new ColorSensorSubsystem();
   public static ControlPanelSubsystem controlPanelSubsystem = new ControlPanelSubsystem();
   //public static ColorSensorV3 colorSensor = new ColorSensorV3();

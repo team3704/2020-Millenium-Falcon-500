@@ -6,30 +6,60 @@
 // /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
+import frc.robot.RobotMap;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
-//  import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
- //  //import com.revrobotics.ColorMatch;
- //  //import com.revrobotics.ColorSensorV3f;
- //  import com.revrobotics.ColorMatch;
- //  import com.revrobotics.ColorSensorV3;
+//  import com.revrobotics.ColorMatch;
+//  import com.revrobotics.ColorSensorV3f;
+//  import com.revrobotics.ColorMatch;
+//  import com.revrobotics.ColorSensorV3;
+//  import edu.wpi.first.wpilibj.I2C;
 
- //  import edu.wpi.first.wpilibj.DoubleSolenoid;
- //  import edu.wpi.first.wpilibj.I2C;
- //import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
- //import edu.wpi.first.wpilibj.I2C;
- //import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
- import edu.wpi.first.wpilibj.command.Subsystem;
- //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
- //import edu.wpi.first.wpilibj.util.Color;
- //import frc.robot.Robot;
- import frc.robot.RobotMap;
+//  import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//  import edu.wpi.first.wpilibj.util.Color;
+
+//  import frc.robot.Robot;
+ 
+
  /**
   * Add your docs here.
   */
 
  public class ControlPanelSubsystem extends Subsystem {
+   //    Put methods for controlling this subsystem
+   //    here. Call these from Commands.
+
+   // Instantiate new motor controller objects
+   public WPI_TalonSRX controlPanelMotor = new WPI_TalonSRX(RobotMap.controlPanelPort);
+
+   // Instantiate new Solenoid for pneumatic cylinder
+   public DoubleSolenoid controlPanelSolenoid = new DoubleSolenoid(RobotMap.controlPanelDeploySolenoidPort,RobotMap.controlPanelRetractSolenoidPort);
+
+   public void setCPMSpeed(double speed){
+        controlPanelMotor.set(speed);
+   }
+
+   public void deployPiston() {
+        controlPanelSolenoid.set(Value.kForward);
+   }
+  
+   public void retractPiston() {
+        controlPanelSolenoid.set(Value.kReverse);
+   }
+
+   @Override
+   public void initDefaultCommand() {
+   // Set the default command for a subsystem here.
+   // setDefaultCommand(new MySpecialCommand());
+   }
+  }
+
+
 
 //   private final I2C.Port i2cPort = I2C.Port.kOnboard;
 
@@ -58,21 +88,18 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 //   private final Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
 //   private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
 
-   public void robotInit() {
+//     public void robotInit() {
 //     m_colorMatcher.addColorMatch(kBlueTarget);
 //     m_colorMatcher.addColorMatch(kGreenTarget);
 //     m_colorMatcher.addColorMatch(kRedTarget);
 //     m_colorMatcher.addColorMatch(kYellowTarget);    
-   }
+//     }
 
-//   // Put methods for controlling this subsystem
-//   // here. Call these from Commands.
+
 //   public WPI_TalonSRX CPMotorG = new WPI_TalonSRX(RobotMap.controlPanelPortG);
 //   public WPI_TalonSRX CPMotorR = new WPI_TalonSRX(RobotMap.controlPanelPortR);
 //   public WPI_TalonSRX CPMotorY = new WPI_TalonSRX(RobotMap.controlPanelPortY);
-//   public WPI_TalonSRX CPMotorB = new WPI_TalonSRX(RobotMap.controlPanelPortB);
-
-   public DoubleSolenoid controlPanelSolenoid = new DoubleSolenoid(RobotMap.controlPanelDeploySolenoidPort,RobotMap.controlPanelRetractSolenoidPort);
+//   public WPI_TalonSRX CPMotorB = new WPI_TalonSRX(RobotMap.controlPanelPortB); 
 
 //   public void setCPMotorGSpeed(double speed){
 //     CPMotorG.set(speed);
@@ -83,34 +110,13 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 //   }  public void setCPMotorYSpeed(double speed){
 //     CPMotorY.set(speed);
 //   }
-//   public void deployPiston(){
-//     controlPanelSolenoid.set(Value.kForward);
-//   }
-//   public void retractPiston(){
-//     controlPanelSolenoid.set(Value.kReverse);
-//   }
-  
-    @Override
-     public void initDefaultCommand() {
-     }
-//   // Instantiate new motor controller objects
-// // public WPI_TalonSRX controlPanelMotor = new WPI_TalonSRX(RobotMap.controlPanelPortG);
-
-	public void retractPiston() {
-	}
-
-	public void deployPiston() {
-	}
-
-//   // Instantiate new Solenoid for pneumatic cylinder
-// //public DoubleSolenoid controlPanelSolenoid = new DoubleSolenoid(RobotMap.controlPanelDeploySolenoidPort,RobotMap.controlPanelRetractSolenoidPort);
 
 //   public static double CalculateDistance(final Color color1, final Color color2) {
 //     double redDiff = color1.red - color2.red;
 //     double greenDiff = color1.green - color2.green;
 //     double blueDiff = color1.blue - color2.blue;
 //     return Math.sqrt((redDiff*redDiff + greenDiff*greenDiff + blueDiff*blueDiff)/2);
-  }
+  
 
 //   // private final I2C.Port i2cPort = I2C.Port.kOnboard;
 
@@ -145,5 +151,4 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 //     //     }
 //    }
 
-//     // Set the default command for a subsystem here.
-//     // setDefaultCommand(new MySpecialCommand());
+//     

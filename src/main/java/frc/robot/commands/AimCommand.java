@@ -27,47 +27,35 @@ public class AimCommand extends Command {
   @Override
   protected void execute() {
 
-double KpAim = -0.1;
-double KpDistance = -0.1;
-double min_aim_command = 0.05;
+    double KpAim = -0.1;
+    double KpDistance = -0.1;
+    double min_aim_command = 0.05;
 
-//std::shared_ptr<NetworkTable> table = NetworkTable::GetTable("limelight");
-//float tx = table->GetNumber("tx");
-//float ty = table->GetNumber("ty");
+    //double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
+    double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
+    double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
+    //double ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
 
-//double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
-double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
-double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
-//double ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
+    double heading_error = -tx;
+    double distance_error = -ty;
+    double steering_adjust = 0.0;
 
-boolean rightTrigger = Robot.oi.xbox.getRawButton(12);
-
-
-if (rightTrigger == true)
-{
-  double heading_error = -tx;
-  double distance_error = -ty;
-  double steering_adjust = 0.0;
-
-  if (tx > 1.0)
-  {
-    steering_adjust = KpAim*heading_error - min_aim_command;
-  }
-  else if (tx < 1.0)
-  {
+    if (tx > 1.0) {
+      steering_adjust = KpAim*heading_error - min_aim_command;
+    }
+    else if (tx < 1.0) {
     steering_adjust = KpAim*heading_error + min_aim_command;
+    }
+
+    double distance_adjust = KpDistance * distance_error;
+    double move = distance_adjust;
+    double turn = steering_adjust;
+    Robot.arcadeDriveSubsystem.manualArcadeDrive(move, turn);
+    //left_command += steering_adjust + distance_adjust;
+    //right_command -= steering_adjust + distance_adjust;
   }
 
-  double distance_adjust = KpDistance * distance_error;
-  double move = distance_adjust;
-  double turn = steering_adjust;
-  Robot.arcadeDriveSubsystem.manualArcadeDrive(move, turn);
-  //left_command += steering_adjust + distance_adjust;
-  //right_command -= steering_adjust + distance_adjust;
-  }
-}
-  //nice
-  // Make this return true wh en this Command no longer needs to run execute()
+  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     return false;

@@ -7,21 +7,19 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.command.TimedCommand;
 import frc.robot.Robot;
 
 public class cpMotorTimedCommand extends TimedCommand {
+  /**
+   * Add your docs here.
+   */
   public cpMotorTimedCommand(double timeout) {
-  super(timeout);
-  requires(Robot.controlPanelTurnSubsystem);
+   super(timeout);
+   // Use requires() here to declare subsystem dependencies
+   requires(Robot.controlPanelSubsystem);
   }
-@Override
-public synchronized void requires(Subsystem subsystem) {
-}    // eg. requires(chassis);
-  
-  
-
+   
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
@@ -30,11 +28,10 @@ public synchronized void requires(Subsystem subsystem) {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.controlPanelTurnSubsystem.setCPMSpeed(0.25);
+    Robot.controlPanelSubsystem.setCPMSpeed(0.25);
   }
 
   // Make this return true when this Command no longer needs to run execute()
-
   @Override
   protected void end() {
   }
