@@ -9,7 +9,6 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Counter;
 import frc.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -28,7 +27,6 @@ public class ClimberSubsystem extends Subsystem {
 
   // Instantiate new limit switch and counter
   DigitalInput limitSwitch = new DigitalInput(RobotMap.limitSwitchPort);
-  Counter counter = new Counter(limitSwitch);
 
   public void setClimbSpeed(double speed) {
     climbMotor1.set(ControlMode.PercentOutput, speed);
@@ -41,12 +39,9 @@ public class ClimberSubsystem extends Subsystem {
   }
 
   public boolean isSwitchSet() {
-    return counter.get() > 0;
+    return limitSwitch.get();
   }
-  
-  public void initializeCounter() {
-    counter.reset();
-  }
+
 
   @Override
   public void initDefaultCommand() {

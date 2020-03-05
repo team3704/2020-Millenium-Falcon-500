@@ -46,8 +46,8 @@ public class RobotMap {
   public static int GBFastSolenoidPort = 2;
   public static int intakeRetractSolenoidPort = 0;
   public static int intakeDeploySolenoidPort = 1;
-  public static int controlPanelDeploySolenoidPort = 4;
-  public static int controlPanelRetractSolenoidPort = 5;
+  public static int controlPanelDeploySolenoidPort = 5;
+  public static int controlPanelRetractSolenoidPort = 4;
 
   // Limit Switch
   public static int limitSwitchPort = 0;
