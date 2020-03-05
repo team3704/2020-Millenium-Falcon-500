@@ -19,7 +19,7 @@ public class LoaderCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.loaderSubsystem.setLoaderSpeed(0.25);
+    Robot.loaderSubsystem.setLoaderSpeed(0.375);
   }
 
   // Called repeatedly when this Command is scheduled to run

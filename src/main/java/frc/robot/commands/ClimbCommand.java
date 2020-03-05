@@ -21,7 +21,7 @@ public class ClimbCommand extends Command {
   @Override
   protected void initialize() {
     Robot.climberSubsystem.initializeCounter();
-    Robot.climberSubsystem.setClimbSpeed(-0.25);
+    Robot.climberSubsystem.setClimbSpeed(-0.5);
   }
 
   // Called repeatedly when this Command is scheduled to run

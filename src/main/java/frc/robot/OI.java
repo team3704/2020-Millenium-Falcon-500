@@ -103,7 +103,7 @@ public class OI {
       buttonBack.whenPressed(new cpMotorTimedCommand(0));
 
       this.rhTrigger = new XboxTrigger(this.xboxtriggers, Hand.kRight);
-      this.rhTrigger.whenActive(new ShooterCommandGroup());
+      this.rhTrigger.whileActive(new ShooterCommandGroup());
 
       this.lhTrigger = new XboxTrigger(this.xboxtriggers, Hand.kLeft);
       this.lhTrigger.whileActive(new LoaderCommand());

@@ -34,6 +34,7 @@ public class ClimberSubsystem extends Subsystem {
     climbMotor1.set(ControlMode.PercentOutput, speed);
   }
 
+
   public void setClimbRetractSpeed(double speed) {
     climbMotor1.set(ControlMode.PercentOutput, speed);
     climbMotor2.set(ControlMode.PercentOutput, speed);

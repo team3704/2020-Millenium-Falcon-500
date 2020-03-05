@@ -25,9 +25,9 @@ public class ShooterCommandGroup extends CommandGroup {
 
     addSequential(new AimCommand());
     addParallel(new ShootCommand(), 8); 
-    addSequential(new WaitCommand(3));   
-    addSequential(new LoaderCommand(), 5);
-    addSequential(new MagazineCommand(), 5);
+    addSequential(new WaitCommand(1));   
+    addParallel(new LoaderCommand(), 7);
+    addSequential(new MagazineCommand(), 7);
 
 
 
