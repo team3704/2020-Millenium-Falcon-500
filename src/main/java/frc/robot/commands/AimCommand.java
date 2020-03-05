@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.command.Command;
+import java.lang.Math;
 import frc.robot.Robot;
 
 public class AimCommand extends Command {
@@ -23,15 +24,15 @@ public class AimCommand extends Command {
   protected void initialize() {
     NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(3);
     NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(0);
-    NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setNumber(0);
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setNumber(1);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
 
-    double KpAim = -0.1;
-    double KpDistance = -0.1;
+    double KpAim = -0.01;
+    double KpDistance = -0.01;
     double min_aim_command = 0.05;
 
     double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
@@ -44,21 +45,19 @@ public class AimCommand extends Command {
     double steering_adjust = 0.0;
 
     if (tv == 0.0) {
-      steering_adjust = 0.3;
+      steering_adjust = 0.1;
     }
-    else if (tx > 1.0) {
+    else if (Math.abs(tx) > 1.0) {
       steering_adjust = KpAim*heading_error - min_aim_command;
     }
 
-    if (tx < 1.0) {
+    if (Math.abs(tx) < 1.0) {
     steering_adjust = KpAim*heading_error + min_aim_command;
     }
   
 
     double distance_adjust = KpDistance * distance_error;
-    double move = distance_adjust;
-    double turn = steering_adjust;
-    Robot.arcadeDriveSubsystem.manualArcadeDrive(move, turn);
+    Robot.arcadeDriveSubsystem.manualArcadeDrive(distance_adjust, steering_adjust);
     //left_command += steering_adjust + distance_adjust;
     //right_command -= steering_adjust + distance_adjust;
   }
