@@ -5,25 +5,25 @@
 // /* the project.                                                               */
 // /*----------------------------------------------------------------------------*/
 
-// package frc.robot.commands;
+//package frc.robot.commands;
 
-// import com.revrobotics.ColorMatchResult;
+//import com.revrobotics.ColorMatchResult;
 
-// //import com.revrobotics.ColorMatch;
+//import com.revrobotics.ColorMatch;
 
-// import edu.wpi.first.wpilibj.command.Command;
-// import edu.wpi.first.wpilibj.util.Color;
-// //import frc.robot.subsystems;
-// import frc.robot.Robot;
+//import edu.wpi.first.wpilibj.command.Command;
+//import edu.wpi.first.wpilibj.util.Color;
+//import frc.robot.subsystems;
+//import frc.robot.Robot;
 
 
-// public class GoToColorCommand extends Command {
+//public class GoToColorCommand extends Command {
 //   public GoToColorCommand() {
 //     // Use requires() here to declare subsystem dependencies
-//     requires(Robot.controlPanelSubsystem);
+ //    requires(Robot.controlPanelSubsystem);
 //     requires(Robot.colorSensorSubsystem);
 //     // eg. requires(chassis);
-//   }
+ //  }
 
 //   // Called just before this Command runs the first time
 //   @Override

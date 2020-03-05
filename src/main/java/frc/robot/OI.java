@@ -102,6 +102,9 @@ public class OI {
       buttonBack = new JoystickButton(xbox, 7);
       buttonBack.whenPressed(new cpMotorTimedCommand(0));
 
+      //buttonStart = new JoystickButton(xbox, 8);
+      //buttonStart.whenPressed(new GoToColorCommand());
+
       this.rhTrigger = new XboxTrigger(this.xboxtriggers, Hand.kRight);
       this.rhTrigger.whileActive(new ShooterCommandGroup());
 
