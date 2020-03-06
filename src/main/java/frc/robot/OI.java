@@ -47,7 +47,7 @@ public class OI {
   public JoystickButton buttonX;          //port 3
   public JoystickButton buttonY;          //port 4
   public JoystickButton buttonStickLeft;  //port 9
-  public JoystickButton buttonStickRight; //port 10 
+  public JoystickButton buttonStickRight; //port10 
   public JoystickButton buttonBack;       //port 7
   public JoystickButton buttonStart;      //port 8
   //public JoystickButton buttonDPad_Left;  //port10
@@ -56,8 +56,8 @@ public class OI {
   //public JoystickButton buttonDPad_Down;  //port14
 
   //Xbox Triggers
-  public XboxTrigger rhTrigger; //port 3
-  public XboxTrigger lhTrigger; //port 2
+  public XboxTrigger rhTrigger;           //port 3
+  public XboxTrigger lhTrigger;           //port 2
 
   //Joystick Controller Buttons
   public JoystickButton button1;

@@ -8,18 +8,22 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.Robot;
 
 public class Autonomous_RightCommand extends CommandGroup {
   /**
    * Add your docs here.
    */
   public Autonomous_RightCommand() {
-    Robot.arcadeDriveSubsystem.manualArcadeDrive(0.25, 0);
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
+
+    addSequential(new DriveForwardTimedCommand(2));
+    addSequential(new TurnLeftTimedCommand(2));
+    addSequential(new DriveForwardTimedCommand(5));
+    addSequential(new TurnLeftTimedCommand(2));
+    addSequential(new ShooterCommandGroup());
 
     // To run multiple commands at the same time,
     // use addParallel()

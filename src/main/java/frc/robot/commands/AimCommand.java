@@ -22,7 +22,7 @@ public class AimCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(3);
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(0);
     NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(0);
     NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setNumber(1);
   }
@@ -31,8 +31,8 @@ public class AimCommand extends Command {
   @Override
   protected void execute() {
 
-    double KpAim = -0.01;
-    double KpDistance = -0.01;
+    double KpAim = 0.075;
+    double KpDistance = 0.1;
     double min_aim_command = 0.05;
 
     double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
@@ -40,9 +40,10 @@ public class AimCommand extends Command {
     double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
     //double ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
 
-    double heading_error = -tx;
-    double distance_error = -ty;
+    double heading_error = tx;
+    double distance_error = ty;
     double steering_adjust = 0.0;
+    double max_drive = 0.7;
 
     if (tv == 0.0) {
       steering_adjust = 0.1;
@@ -57,6 +58,10 @@ public class AimCommand extends Command {
   
 
     double distance_adjust = KpDistance * distance_error;
+    if (distance_adjust > max_drive){
+      distance_adjust = max_drive;
+    }
+
     Robot.arcadeDriveSubsystem.manualArcadeDrive(distance_adjust, steering_adjust);
     //left_command += steering_adjust + distance_adjust;
     //right_command -= steering_adjust + distance_adjust;

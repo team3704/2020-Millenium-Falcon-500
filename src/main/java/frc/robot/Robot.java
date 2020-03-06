@@ -24,6 +24,7 @@ import frc.robot.subsystems.LoaderSubsystem;
 import frc.robot.subsystems.MagazineSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.commands.Arcade_ShiftCommand;
+import frc.robot.commands.Autonomous_LeftCommand;
 
  // The VM is configured to automatically run this class, and to call the
  // functions corresponding to each mode, as described in the TimedRobot
@@ -62,7 +63,11 @@ public class Robot extends TimedRobot {
     chooser.setDefaultOption("Default Auto", new Arcade_ShiftCommand(Value.kForward));
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", chooser);
-  } //nice
+    autonomousCommand = new Autonomous_LeftCommand();
+  }
+  
+  
+   //nice
 
    // This function is called every robot packet, no matter the mode. Use
    // this for items like diagnostics that you want ran during disabled,
@@ -100,32 +105,23 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
-    timer.reset();
-    timer.start();
-    autonomousCommand = chooser.getSelected();
 
      // String autoSelected = SmartDashboard.getString("Auto Selector",
      // "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
      // = new MyAutoCommand(); break; case "Default Auto": default:
      // autonomousCommand = new ExampleCommand(); break; }
 
+    // autonomousCommand = chooser.getSelected();
+
     // schedule the autonomous command (example)
-    if (autonomousCommand != null) {
-      autonomousCommand.start();
-    }
+    if (autonomousCommand != null) autonomousCommand.start();
+    
   }
 
    // This function is called periodically during autonomous.
 
   @Override
   public void autonomousPeriodic() {
-
-    //Drive for 2 seconds
-    if (timer.get() < 2.0) {
-      Robot.arcadeDriveSubsystem.manualArcadeDrive(0.5, 0.0);
-    } else {
-      Robot.arcadeDriveSubsystem.drive.stopMotor(); // stops robot
-    }
     
     Scheduler.getInstance().run();
   }

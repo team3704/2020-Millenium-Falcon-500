@@ -66,7 +66,7 @@ public class LimelightSubsystem
   public static LimelightSubsystem getInstance()
   {
     if (instance == null)
-      instance = new LimelightSubsystem();
+      instance = new LimelightSubsystem(); //nice
     
     return instance;
   }
