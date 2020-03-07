@@ -19,6 +19,7 @@ import frc.robot.commands.LoaderCommand;
 import frc.robot.commands.MagazineCommand;
 import frc.robot.commands.MagazineReverseCommand;
 import frc.robot.commands.ShooterCommandGroup;
+import frc.robot.commands.ShooterNoLimeLightCommandGroup;
 import frc.robot.commands.cpDeployCommand;
 import frc.robot.commands.cpMotorTimedCommand;
 import frc.robot.commands.cpRetractCommand;
@@ -129,6 +130,9 @@ public class OI {
       button1 = new JoystickButton(joystick, 1);
       button1.whenPressed(new Arcade_ShiftCommand(Value.kReverse));
       button1.whenReleased(new Arcade_ShiftCommand(Value.kForward));
+
+      button2 = new JoystickButton(joystick, 2);
+      button2.whileHeld(new ShooterNoLimeLightCommandGroup());
 
       button6 = new JoystickButton(joystick, 6);
       button6.whileHeld(new ClimbCommand());

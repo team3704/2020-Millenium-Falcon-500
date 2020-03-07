@@ -77,7 +77,9 @@ public class AimCommand extends Command {
   @Override
   protected boolean isFinished() {
     double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
-    if (Math.abs(tx) < 0.04) {
+    double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
+    
+    if (Math.abs(tx) < 0.04 && Math.abs(ty) < 0.1) {
       return true;
     } 
     else {
