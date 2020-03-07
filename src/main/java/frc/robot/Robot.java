@@ -10,7 +10,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -23,7 +22,6 @@ import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LoaderSubsystem;
 import frc.robot.subsystems.MagazineSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
-import frc.robot.commands.Arcade_ShiftCommand;
 import frc.robot.commands.Autonomous_CenterCommand;
 import frc.robot.commands.Autonomous_LeftCommand;
 import frc.robot.commands.Autonomous_RightCommand;
@@ -62,10 +60,11 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     oi = new OI();
-    chooser.setDefaultOption("Default Auto", new Arcade_ShiftCommand(Value.kForward));
-    // chooser.addOption("My Auto", new MyAutoCommand());
+
+    chooser.setDefaultOption("Default Auto", new Autonomous_CenterCommand());
+    chooser.addOption("Left Auto", new Autonomous_LeftCommand());
+    chooser.addOption("Right Auto", new Autonomous_RightCommand());
     SmartDashboard.putData("Auto mode", chooser);
-    autonomousCommand = new Autonomous_LeftCommand();
   }
   
   

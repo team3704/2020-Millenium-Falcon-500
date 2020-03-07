@@ -25,12 +25,12 @@ public class ShootCommand extends Command {
   @Override
   protected void execute() {
     //To Set the speed of the shooter pass: setShooterSpeed(double -leftSpeed, double +rightSpeed)
-    Robot.shooterSubsystem.setShooterSpeed(-1, 1);
+    Robot.shooterSubsystem.setShooterSpeed(-.5, .5);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
-  protected boolean isFinished() {
+  protected boolean isFinished() { 
     return false;
   }
 

@@ -46,9 +46,11 @@ public class AimCommand extends Command {
     double max_drive = 0.7;
     double max_turn = 0.25;
 
-    //if (tv == 0.0) {
-    //  steering_adjust = 0.1;
-    //}
+    //seeking target
+    if (tv == 0.0) {
+      steering_adjust = 0.1;
+    }
+
     if (Math.abs(tx) > 1.0) {
       steering_adjust = KpAim*heading_error - min_aim_command;
       if (steering_adjust > max_turn){
