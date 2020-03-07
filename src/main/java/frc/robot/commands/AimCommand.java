@@ -31,7 +31,7 @@ public class AimCommand extends Command {
   @Override
   protected void execute() {
 
-    double KpAim = 0.075;
+    double KpAim = 0.0375;
     double KpDistance = 0.1;
     double min_aim_command = 0.05;
 
@@ -44,14 +44,18 @@ public class AimCommand extends Command {
     double distance_error = ty;
     double steering_adjust = 0.0;
     double max_drive = 0.7;
+    double max_turn = 0.25;
 
-    if (tv == 0.0) {
-      steering_adjust = 0.1;
-    }
-    else if (Math.abs(tx) > 1.0) {
+    //if (tv == 0.0) {
+    //  steering_adjust = 0.1;
+    //}
+    if (Math.abs(tx) > 1.0) {
       steering_adjust = KpAim*heading_error - min_aim_command;
-    }
-
+      if (steering_adjust > max_turn){
+        steering_adjust = max_turn;
+      }
+    } 
+    
     if (Math.abs(tx) < 1.0) {
     steering_adjust = KpAim*heading_error + min_aim_command;
     }
@@ -71,7 +75,7 @@ public class AimCommand extends Command {
   @Override
   protected boolean isFinished() {
     double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
-    if (tx < 0.075) {
+    if (Math.abs(tx) < 0.04) {
       return true;
     } 
     else {
@@ -83,7 +87,7 @@ public class AimCommand extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(0);
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1);
   }
 
   // Called when another command which requires one or more of the same

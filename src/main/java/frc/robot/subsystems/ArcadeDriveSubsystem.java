@@ -67,8 +67,8 @@ public class ArcadeDriveSubsystem extends Subsystem {
     }
 
     //Decrease performance to improve driver control
-    move *= 0.50;
-    turn *= 0.375;
+    move *= 0.75;
+    turn *= 0.75;
 
     drive.arcadeDrive(move, turn); 
 

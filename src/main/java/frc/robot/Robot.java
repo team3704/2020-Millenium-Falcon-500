@@ -24,7 +24,9 @@ import frc.robot.subsystems.LoaderSubsystem;
 import frc.robot.subsystems.MagazineSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.commands.Arcade_ShiftCommand;
+import frc.robot.commands.Autonomous_CenterCommand;
 import frc.robot.commands.Autonomous_LeftCommand;
+import frc.robot.commands.Autonomous_RightCommand;
 
  // The VM is configured to automatically run this class, and to call the
  // functions corresponding to each mode, as described in the TimedRobot
@@ -106,12 +108,15 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
 
-     // String autoSelected = SmartDashboard.getString("Auto Selector",
-     // "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-     // = new MyAutoCommand(); break; case "Default Auto": default:
-     // autonomousCommand = new ExampleCommand(); break; }
 
-    // autonomousCommand = chooser.getSelected();
+     String autoSelected = SmartDashboard.getString("Auto Selector", "Center Auto"); 
+        switch(autoSelected) { 
+          case "Left Auto": autonomousCommand = new Autonomous_LeftCommand(); break; 
+          case "Center Auto" : default: autonomousCommand = new Autonomous_CenterCommand(); break; 
+          case "Right Auto" : autonomousCommand = new Autonomous_RightCommand(); break;
+        }
+
+    autonomousCommand = chooser.getSelected();
 
     // schedule the autonomous command (example)
     if (autonomousCommand != null) autonomousCommand.start();
