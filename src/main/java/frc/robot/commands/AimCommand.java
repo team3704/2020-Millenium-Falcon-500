@@ -9,6 +9,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import java.lang.Math;
 import frc.robot.Robot;
 
@@ -22,20 +24,20 @@ public class AimCommand extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(0);
-    NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(0);
-    NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setNumber(1);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(0);
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(0);
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setNumber(1);
 
-    double KpAim = 0.0375;
-    double KpDistance = 0.1;
-    double min_aim_command = 0.05;
+    double KpAim = 0.05;
+    double KpDistance = 0.05;
+    double min_aim_command = 0.15;
 
-    double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
+    //double tv = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0);
     double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
     double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
     //double ta = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
@@ -43,34 +45,23 @@ public class AimCommand extends Command {
     double heading_error = tx;
     double distance_error = ty;
     double steering_adjust = 0.0;
-    double max_drive = 0.7;
-    double max_turn = 0.25;
+    double max_drive = 0.05;
+    double max_turn = 0.15;
 
     //seeking target
-    if (tv == 0.0) {
-      steering_adjust = 0.1;
-    }
+    //if (tv == 0.0) {
+    //  steering_adjust = 0.1;
+    //}
 
-    if (Math.abs(tx) > 1.0) {
-      steering_adjust = KpAim*heading_error - min_aim_command;
-      if (steering_adjust > max_turn){
-        steering_adjust = max_turn;
-      }
-    } 
-    
-    if (Math.abs(tx) < 1.0) {
+    //Aim
     steering_adjust = KpAim*heading_error + min_aim_command;
-    }
-  
+    
 
+    //Range
     double distance_adjust = KpDistance * distance_error;
-    if (distance_adjust > max_drive){
-      distance_adjust = max_drive;
-    }
+    
 
     Robot.arcadeDriveSubsystem.manualArcadeDrive(distance_adjust, steering_adjust);
-    //left_command += steering_adjust + distance_adjust;
-    //right_command -= steering_adjust + distance_adjust;
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -79,7 +70,8 @@ public class AimCommand extends Command {
     double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
     double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
     
-    if (Math.abs(tx) < 0.04 && Math.abs(ty) < 0.1) {
+
+    if (Math.abs(tx) < 0.5) {
       return true;
     } 
     else {
@@ -91,7 +83,7 @@ public class AimCommand extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1);
+    //NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1);
   }
 
   // Called when another command which requires one or more of the same

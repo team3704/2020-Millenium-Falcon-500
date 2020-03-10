@@ -8,23 +8,27 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
-public class Autonomous_CenterCommand extends CommandGroup {
+
+public class ShooterNoLimeLightCommand65 extends CommandGroup {
+  
   /**
    * Add your docs here.
    */
-  public Autonomous_CenterCommand() {
+
+  public ShooterNoLimeLightCommand65() {  
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
 
-    addSequential(new ShooterCommandGroup());
-    addSequential(new DriveForwardTimedCommand(2));
-    addSequential(new TurnLeftTimedCommand(2));
-    addSequential(new DriveForwardTimedCommand(2));
-    addSequential(new TurnLeftTimedCommand(2));
- 
+    addParallel(new ShootCommand65(), 8); 
+    addSequential(new WaitCommand(0.5));   
+    addParallel(new LoaderCommand(), 7);
+    addSequential(new MagazineCommand(), 7);
+
+
 
     // To run multiple commands at the same time,
     // use addParallel()

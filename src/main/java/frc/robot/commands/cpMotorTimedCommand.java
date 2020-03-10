@@ -34,6 +34,7 @@ public class cpMotorTimedCommand extends TimedCommand {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected void end() {
+    Robot.controlPanelSubsystem.setCPMSpeed(0);
   }
 
   // Called when another command which requires one or more of the same

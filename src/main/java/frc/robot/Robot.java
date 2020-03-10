@@ -6,8 +6,8 @@
 // /*----------------------------------------------------------------------------*/         
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 //import com.revrobotics.ColorSensorV3;
-
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -53,10 +53,9 @@ public class Robot extends TimedRobot {
   
   Command autonomousCommand;
   SendableChooser<Command> chooser = new SendableChooser<>();
-
    // This function is run when the robot is first started up and should be
    // used for any initialization code.
-   
+   SendableChooser modeChooser;
   @Override
   public void robotInit() {
     oi = new OI();
@@ -65,10 +64,12 @@ public class Robot extends TimedRobot {
     chooser.addOption("Left Auto", new Autonomous_LeftCommand());
     chooser.addOption("Right Auto", new Autonomous_RightCommand());
     SmartDashboard.putData("Auto mode", chooser);
-  }
-  
-  
-   //nice
+    SmartDashboard.putData(Scheduler.getInstance());
+
+    CameraServer.getInstance().startAutomaticCapture();
+    modeChooser = new SendableChooser();
+    SmartDashboard.putData("Auto mode", modeChooser);
+  }  
 
    // This function is called every robot packet, no matter the mode. Use
    // this for items like diagnostics that you want ran during disabled,
@@ -118,8 +119,9 @@ public class Robot extends TimedRobot {
     autonomousCommand = chooser.getSelected();
 
     // schedule the autonomous command (example)
-    if (autonomousCommand != null) autonomousCommand.start();
-    
+    if (autonomousCommand != null) {
+      autonomousCommand.start();    
+    }
   }
 
    // This function is called periodically during autonomous.
@@ -152,5 +154,5 @@ public class Robot extends TimedRobot {
 
   @Override
   public void testPeriodic() {
-  }
+    }
 }

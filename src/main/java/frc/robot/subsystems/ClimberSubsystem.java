@@ -22,20 +22,18 @@ public class ClimberSubsystem extends Subsystem {
   // here. Call these from Commands.
   
   // Instantiate new motor controller objects
-  public VictorSPX climbMotor1 = new VictorSPX(RobotMap.climberPort1);
-  public VictorSPX climbMotor2 = new VictorSPX(RobotMap.climberPort2);
+  public VictorSPX wandMotor = new VictorSPX(RobotMap.climberPort1);
+  public VictorSPX winchMotor = new VictorSPX(RobotMap.climberPort2);
 
   // Instantiate new limit switch and counter
   DigitalInput limitSwitch = new DigitalInput(RobotMap.limitSwitchPort);
 
-  public void setClimbSpeed(double speed) {
-    climbMotor1.set(ControlMode.PercentOutput, speed);
+  public void setWandSpeed(double speed) {
+    wandMotor.set(ControlMode.PercentOutput, speed);
   }
 
-
-  public void setClimbRetractSpeed(double speed) {
-    climbMotor1.set(ControlMode.PercentOutput, speed);
-    climbMotor2.set(ControlMode.PercentOutput, speed);
+  public void setWinchSpeed(double speed) {
+    winchMotor.set(ControlMode.PercentOutput, speed);
   }
 
   public boolean isSwitchSet() {

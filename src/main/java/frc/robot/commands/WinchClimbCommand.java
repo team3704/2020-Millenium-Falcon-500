@@ -10,16 +10,16 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class LoaderCommand extends Command {
-  public LoaderCommand() {
+public class WinchClimbCommand extends Command {
+  public WinchClimbCommand() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.loaderSubsystem);
+    requires(Robot.climberSubsystem);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.loaderSubsystem.setLoaderSpeed(0.5);
+    Robot.climberSubsystem.setWinchSpeed(-1);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -36,7 +36,7 @@ public class LoaderCommand extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.loaderSubsystem.setLoaderSpeed(0);
+    Robot.climberSubsystem.setWinchSpeed(0);
   }
 
   // Called when another command which requires one or more of the same

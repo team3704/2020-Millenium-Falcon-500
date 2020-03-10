@@ -42,7 +42,7 @@ public class RobotMap {
   public static int climberPort2 = 11;
 
   //Solenoid Port Identifers
-  public static int GBSlowSolenoidPort = 3;
+  public static int GBSlowSolenoidPort = 7;
   public static int GBFastSolenoidPort = 2;
   public static int intakeRetractSolenoidPort = 0;
   public static int intakeDeploySolenoidPort = 1;

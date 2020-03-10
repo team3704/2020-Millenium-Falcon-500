@@ -19,13 +19,18 @@ import frc.robot.commands.LoaderCommand;
 import frc.robot.commands.MagazineCommand;
 import frc.robot.commands.MagazineReverseCommand;
 import frc.robot.commands.ShooterCommandGroup;
-import frc.robot.commands.ShooterNoLimeLightCommandGroup;
+import frc.robot.commands.ShooterNoLimeLightCommand35;
+import frc.robot.commands.ShooterNoLimeLightCommand50;
+import frc.robot.commands.ShooterNoLimeLightCommand65;
+import frc.robot.commands.ShooterNoLimeLightCommand75;
+import frc.robot.commands.WandDownCommand;
+import frc.robot.commands.WandUpCommand;
+import frc.robot.commands.WinchClimbCommand;
+import frc.robot.commands.WinchReleaseCommand;
 import frc.robot.commands.cpDeployCommand;
 import frc.robot.commands.cpMotorTimedCommand;
 import frc.robot.commands.cpRetractCommand;
 import frc.robot.commands.Arcade_ShiftCommand;
-import frc.robot.commands.ClimbCommand;
-import frc.robot.commands.ClimbRetractCommand;
 import frc.robot.commands.IntakeDeployCommand;
 import frc.robot.commands.IntakeMotorCommand;
 import frc.robot.XboxTrigger;
@@ -71,6 +76,7 @@ public class OI {
   public JoystickButton button8;
   public JoystickButton button9;
   public JoystickButton button10;
+  public JoystickButton button11;
 
 
   public OI()  {
@@ -101,7 +107,10 @@ public class OI {
       buttonY.whenPressed(new cpRetractCommand());
 
       buttonBack = new JoystickButton(xbox, 7);
-      buttonBack.whenPressed(new cpMotorTimedCommand(0));
+      buttonBack.whenPressed(new cpMotorTimedCommand(6));
+
+      buttonStart = new JoystickButton(xbox, 8);
+      buttonStart.whileHeld(new WinchClimbCommand());
 
       //buttonStart = new JoystickButton(xbox, 8);
       //buttonStart.whenPressed(new GoToColorCommand());
@@ -132,13 +141,32 @@ public class OI {
       button1.whenReleased(new Arcade_ShiftCommand(Value.kForward));
 
       button2 = new JoystickButton(joystick, 2);
-      button2.whileHeld(new ShooterNoLimeLightCommandGroup());
+      button2.whileHeld(new ShooterNoLimeLightCommand75());
+
+      button3 = new JoystickButton(joystick, 3);
+      button3.whileHeld(new ShooterNoLimeLightCommand50());
+
+      button4 = new JoystickButton(joystick, 4);
+      button4.whileHeld(new ShooterNoLimeLightCommand35());
+
+      button5 = new JoystickButton(joystick, 5);
+      button5.whileHeld(new ShooterNoLimeLightCommand65());
 
       button6 = new JoystickButton(joystick, 6);
-      button6.whileHeld(new ClimbCommand());
+      button6.whileHeld(new WandUpCommand());
 
       button7 = new JoystickButton(joystick, 7);
-      button7.whileHeld(new ClimbRetractCommand());
+      button7.whileHeld(new WandDownCommand());
+
+      button10 = new JoystickButton(joystick, 10);
+      button10.whileHeld(new WinchClimbCommand());
+
+      button11 = new JoystickButton(joystick, 11);
+      button11.whileHeld(new WinchReleaseCommand());
+      
+      //button3 = new JoystickButton(joystick, 3);
+      //button3.whileHeld(new WinchReleaseCommand());
+
 
   }
 
