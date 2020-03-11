@@ -81,6 +81,11 @@ public class ArcadeDriveSubsystem extends Subsystem {
 
   }
 
+    // Add autonArcadeDrive() method
+    public void autonArcadeDrive(double move, double turn, boolean squareInputs) {
+          drive.arcadeDrive(move, turn, squareInputs);; 
+      }
+
     public void stop(){
           drive.arcadeDrive(0, 0);
     }

@@ -26,17 +26,19 @@ public class DriveForwardTimedCommand extends TimedCommand {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    System.out.println("Entered auton drive " + System.currentTimeMillis());
+    Robot.arcadeDriveSubsystem.autonArcadeDrive(-0.375, 0, false);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.arcadeDriveSubsystem.manualArcadeDrive(0.25, 0, true);
   }
 
   // Called once after timeout
   @Override
   protected void end() {
+    System.out.println("Exited auton drive " + System.currentTimeMillis());
     Robot.arcadeDriveSubsystem.manualArcadeDrive(0, 0, true);
   }
 

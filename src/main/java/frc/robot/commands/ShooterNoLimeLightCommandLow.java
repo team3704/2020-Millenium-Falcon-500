@@ -11,19 +11,19 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 
 
-public class ShooterNoLimeLightCommand65 extends CommandGroup {
+public class ShooterNoLimeLightCommandLow extends CommandGroup {
   
   /**
    * Add your docs here.
    */
 
-  public ShooterNoLimeLightCommand65() {  
+  public ShooterNoLimeLightCommandLow() {  
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
 
-    addParallel(new ShootCommand65(), 8); 
+    addParallel(new ShootCommandLow(), 8); 
     addSequential(new WaitCommand(0.5));   
     addParallel(new LoaderCommand(), 7);
     addSequential(new MagazineCommand(), 7);

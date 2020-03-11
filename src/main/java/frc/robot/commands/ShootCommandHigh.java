@@ -10,8 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ShootCommand50 extends Command {
-  public ShootCommand50() {
+public class ShootCommandHigh extends Command {
+  public ShootCommandHigh() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.shooterSubsystem);
   }
@@ -25,7 +25,7 @@ public class ShootCommand50 extends Command {
   @Override
   protected void execute() {
     //To Set the speed of the shooter pass: setShooterSpeed(double -leftSpeed, double +rightSpeed)
-    Robot.shooterSubsystem.setShooterSpeed(-.5, .5);
+    Robot.shooterSubsystem.setShooterSpeed(-.65, .65);
   }
 
   // Make this return true when this Command no longer needs to run execute()

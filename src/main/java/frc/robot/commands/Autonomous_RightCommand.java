@@ -19,11 +19,8 @@ public class Autonomous_RightCommand extends CommandGroup {
     // addSequential(new Command2());
     // these will run in order.
 
-    addSequential(new DriveForwardTimedCommand(2));
-    addSequential(new TurnLeftTimedCommand(2));
-    addSequential(new DriveForwardTimedCommand(5));
-    addSequential(new TurnLeftTimedCommand(2));
     addSequential(new ShooterCommandGroup());
+    addSequential(new DriveForwardTimedCommand(1));
 
     // To run multiple commands at the same time,
     // use addParallel()

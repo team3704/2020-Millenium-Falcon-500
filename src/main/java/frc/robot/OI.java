@@ -20,10 +20,10 @@ import frc.robot.commands.LoaderReverseCommand;
 import frc.robot.commands.MagazineCommand;
 import frc.robot.commands.MagazineReverseCommand;
 import frc.robot.commands.ShooterCommandGroup;
-import frc.robot.commands.ShooterNoLimeLightCommand35;
-import frc.robot.commands.ShooterNoLimeLightCommand50;
-import frc.robot.commands.ShooterNoLimeLightCommand65;
-import frc.robot.commands.ShooterNoLimeLightCommand75;
+import frc.robot.commands.ShooterNoLimeLightCommandHigh;
+import frc.robot.commands.ShooterNoLimeLightCommandLow;
+import frc.robot.commands.ShooterNoLimeLightCommandMedium;
+import frc.robot.commands.ShooterNoLimeLightCommandUltra;
 import frc.robot.commands.WandDownCommand;
 import frc.robot.commands.WandUpCommand;
 import frc.robot.commands.WinchClimbCommand;
@@ -142,16 +142,16 @@ public class OI {
       button1.whenReleased(new Arcade_ShiftCommand(Value.kForward));
 
       button2 = new JoystickButton(joystick, 2);
-      button2.whileHeld(new ShooterNoLimeLightCommand75());
+      button2.whileHeld(new ShooterNoLimeLightCommandUltra());
 
       button3 = new JoystickButton(joystick, 3);
-      button3.whileHeld(new ShooterNoLimeLightCommand50());
+      button3.whileHeld(new ShooterNoLimeLightCommandMedium());
 
       button4 = new JoystickButton(joystick, 4);
-      button4.whileHeld(new ShooterNoLimeLightCommand35());
+      button4.whileHeld(new ShooterNoLimeLightCommandLow());
 
       button5 = new JoystickButton(joystick, 5);
-      button5.whileHeld(new ShooterNoLimeLightCommand65());
+      button5.whileHeld(new ShooterNoLimeLightCommandHigh());
 
       button6 = new JoystickButton(joystick, 6);
       button6.whileHeld(new WandUpCommand());

@@ -20,11 +20,8 @@ public class Autonomous_CenterCommand extends CommandGroup {
     // these will run in order.
 
     addSequential(new ShooterCommandGroup());
-    addSequential(new DriveForwardTimedCommand(2));
-    addSequential(new TurnLeftTimedCommand(2));
-    addSequential(new DriveForwardTimedCommand(2));
-    addSequential(new TurnLeftTimedCommand(2));
- 
+    addSequential(new DriveForwardTimedCommand(1));
+
 
     // To run multiple commands at the same time,
     // use addParallel()

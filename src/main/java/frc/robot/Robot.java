@@ -53,9 +53,9 @@ public class Robot extends TimedRobot {
   
   Command autonomousCommand;
   SendableChooser<Command> chooser = new SendableChooser<>();
+
    // This function is run when the robot is first started up and should be
    // used for any initialization code.
-   SendableChooser modeChooser;
   @Override
   public void robotInit() {
     oi = new OI();
@@ -67,8 +67,8 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData(Scheduler.getInstance());
 
     CameraServer.getInstance().startAutomaticCapture();
-    modeChooser = new SendableChooser();
-    SmartDashboard.putData("Auto mode", modeChooser);
+
+    
   }  
 
    // This function is called every robot packet, no matter the mode. Use
