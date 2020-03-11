@@ -61,7 +61,7 @@ public class AimCommand extends Command {
     double distance_adjust = KpDistance * distance_error;
     
 
-    Robot.arcadeDriveSubsystem.manualArcadeDrive(distance_adjust, steering_adjust);
+    Robot.arcadeDriveSubsystem.manualArcadeDrive(distance_adjust, steering_adjust, true);
   }
 
   // Make this return true when this Command no longer needs to run execute()

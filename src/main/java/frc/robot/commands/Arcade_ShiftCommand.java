@@ -34,7 +34,7 @@ public class Arcade_ShiftCommand extends Command {
     Robot.arcadeDriveSubsystem.shift(value);
     double move = -1* Robot.oi.joystick.getY();
     double turn = Robot.oi.joystick.getX();
-    Robot.arcadeDriveSubsystem.manualArcadeDrive(move, turn);
+    Robot.arcadeDriveSubsystem.manualArcadeDrive(move, turn, true);
 
     
   }

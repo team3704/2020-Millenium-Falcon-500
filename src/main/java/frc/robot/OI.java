@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.IntakeRetractCommand;
 import frc.robot.commands.IntakeReverseCommand;
 import frc.robot.commands.LoaderCommand;
+import frc.robot.commands.LoaderReverseCommand;
 import frc.robot.commands.MagazineCommand;
 import frc.robot.commands.MagazineReverseCommand;
 import frc.robot.commands.ShooterCommandGroup;
@@ -56,7 +57,7 @@ public class OI {
   public JoystickButton buttonStickRight; //port10 
   public JoystickButton buttonBack;       //port 7
   public JoystickButton buttonStart;      //port 8
-  //public JoystickButton buttonDPad_Left;  //port10
+  public JoystickButton buttonDPad_Left;  //port10
   //public JoystickButton buttonDPad_Right; //port12
   //public JoystickButton buttonDPad_Up;    //port13
   //public JoystickButton buttonDPad_Down;  //port14
@@ -112,8 +113,8 @@ public class OI {
       buttonStart = new JoystickButton(xbox, 8);
       buttonStart.whileHeld(new WinchClimbCommand());
 
-      //buttonStart = new JoystickButton(xbox, 8);
-      //buttonStart.whenPressed(new GoToColorCommand());
+      buttonDPad_Left = new JoystickButton(xbox, 10);
+      buttonDPad_Left.whileHeld(new LoaderReverseCommand());
 
       this.rhTrigger = new XboxTrigger(this.xboxtriggers, Hand.kRight);
       this.rhTrigger.whileActive(new ShooterCommandGroup());

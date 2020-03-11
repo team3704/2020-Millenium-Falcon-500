@@ -7,37 +7,36 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.TimedCommand;
+import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-/**
- * Add your docs here.
- */
-public class DriveForwardTimedCommand extends TimedCommand {
-  /**
-   * Add your docs here.
-   */
-  public DriveForwardTimedCommand(double timeout) {
-    super(timeout);
+public class LoaderReverseCommand extends Command {
+  public LoaderReverseCommand() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.arcadeDriveSubsystem);
+    requires(Robot.loaderSubsystem);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.loaderSubsystem.setLoaderSpeed(-0.25);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.arcadeDriveSubsystem.manualArcadeDrive(0.25, 0, true);
   }
 
-  // Called once after timeout
+  // Make this return true when this Command no longer needs to run execute()
+  @Override
+  protected boolean isFinished() {
+    return false;
+  }
+
+  // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.arcadeDriveSubsystem.manualArcadeDrive(0, 0, true);
+    Robot.loaderSubsystem.setLoaderSpeed(0);
   }
 
   // Called when another command which requires one or more of the same

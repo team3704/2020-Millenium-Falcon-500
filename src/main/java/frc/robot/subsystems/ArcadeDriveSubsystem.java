@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -15,8 +16,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
 import frc.robot.commands.Arcade_ShiftCommand;
-//import frc.robot.commands.Arcade_ShiftCommand;
-
 
 /**
  * Add your docs here.
@@ -31,11 +30,11 @@ public class ArcadeDriveSubsystem extends Subsystem {
   public WPI_TalonSRX rightMaster = new WPI_TalonSRX(RobotMap.rightMasterPort);
   public WPI_TalonSRX rightSlave1 = new WPI_TalonSRX(RobotMap.righSlavePort);
 
+
   // Instantiate new gearbox Solenoid
   private final DoubleSolenoid shiftSolenoid = new DoubleSolenoid(RobotMap.GBSlowSolenoidPort, RobotMap.GBFastSolenoidPort);
 
   // Instantiate a new DifferentialDrive objects
-  // Assign motor controllers to differential drive
   public DifferentialDrive drive = null;
   
 
@@ -47,10 +46,17 @@ public class ArcadeDriveSubsystem extends Subsystem {
 
       drive = new DifferentialDrive(leftMaster, rightMaster);
       drive.setSafetyEnabled(false);
+
+      //Set neutral mode to allow drive train motors to coast when no power is applied
+      leftMaster.setNeutralMode(NeutralMode.Coast);
+      leftSlave1.setNeutralMode(NeutralMode.Coast);
+      rightMaster.setNeutralMode(NeutralMode.Coast);
+      rightSlave1.setNeutralMode(NeutralMode.Coast);
+
   }
 
   // Add manualArcadeDrive() method
-  public void manualArcadeDrive(double move, double turn) {
+  public void manualArcadeDrive(double move, double turn, boolean squareInputs) {
     
     // Max speed for testing mode
     // if(move > 0.75) move = .75;
@@ -59,18 +65,19 @@ public class ArcadeDriveSubsystem extends Subsystem {
     // if(turn < -0.25) move = -.25;
 
     // Creates deadband for small joystick movements
-    if (Math.abs(move) < 0.05) {
-      move = 0;
-    }
-    if (Math.abs(turn) < 0.05) {
-      turn = 0;
-    }
+    //if (Math.abs(move) < 0.05) {
+    //  move = 0;
+    //}
+    //if (Math.abs(turn) < 0.05) {
+    //  turn = 0;
+   // }
 
     //Decrease performance to improve driver control
     move *= 0.75;
     turn *= 0.75;
+    squareInputs = true;
 
-    drive.arcadeDrive(move, turn); 
+    drive.arcadeDrive(move, turn, squareInputs);; 
 
   }
 

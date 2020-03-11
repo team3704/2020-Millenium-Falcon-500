@@ -31,13 +31,13 @@ public class TurnLeftTimedCommand extends TimedCommand {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.arcadeDriveSubsystem.manualArcadeDrive(0, -0.25);
+    Robot.arcadeDriveSubsystem.manualArcadeDrive(0, -0.25, true);
   }
 
   // Called once after timeout
   @Override
   protected void end() {
-    Robot.arcadeDriveSubsystem.manualArcadeDrive(0, 0);
+    Robot.arcadeDriveSubsystem.manualArcadeDrive(0, 0, true);
   }
 
   // Called when another command which requires one or more of the same
