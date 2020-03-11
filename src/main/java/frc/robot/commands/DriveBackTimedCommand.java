@@ -27,7 +27,7 @@ public class DriveBackTimedCommand extends TimedCommand {
   @Override
   protected void initialize() {
     System.out.println("Entered auton drive " + System.currentTimeMillis());
-    Robot.arcadeDriveSubsystem.autonArcadeDrive(-0.30, 0, false);
+    Robot.arcadeDriveSubsystem.autonArcadeDrive(-0.25, 0, false);
   }
 
   // Called repeatedly when this Command is scheduled to run
