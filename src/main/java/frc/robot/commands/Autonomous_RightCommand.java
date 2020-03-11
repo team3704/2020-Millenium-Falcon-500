@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 public class Autonomous_RightCommand extends CommandGroup {
   /**
@@ -20,7 +21,10 @@ public class Autonomous_RightCommand extends CommandGroup {
     // these will run in order.
 
     addSequential(new ShooterCommandGroup());
-    addSequential(new DriveForwardTimedCommand(1));
+    addSequential(new WaitCommand(0.5));
+    addSequential(new DriveBackTimedCommand(1));
+    addSequential(new WaitCommand(0.5));
+    addSequential(new TurnRightTimedCommand(1));
 
     // To run multiple commands at the same time,
     // use addParallel()

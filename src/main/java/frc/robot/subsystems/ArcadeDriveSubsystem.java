@@ -58,20 +58,6 @@ public class ArcadeDriveSubsystem extends Subsystem {
   // Add manualArcadeDrive() method
   public void manualArcadeDrive(double move, double turn, boolean squareInputs) {
     
-    // Max speed for testing mode
-    // if(move > 0.75) move = .75;
-    // if(move < -0.75) move = -.75;
-    // if(turn > 0.25) move = .25;
-    // if(turn < -0.25) move = -.25;
-
-    // Creates deadband for small joystick movements
-    //if (Math.abs(move) < 0.05) {
-    //  move = 0;
-    //}
-    //if (Math.abs(turn) < 0.05) {
-    //  turn = 0;
-   // }
-
     //Decrease performance to improve driver control
     move *= 0.75;
     turn *= 0.75;
@@ -83,8 +69,8 @@ public class ArcadeDriveSubsystem extends Subsystem {
 
     // Add autonArcadeDrive() method
     public void autonArcadeDrive(double move, double turn, boolean squareInputs) {
-          drive.arcadeDrive(move, turn, squareInputs);; 
-      }
+        drive.arcadeDrive(move, turn, squareInputs);; 
+    }
 
     public void stop(){
           drive.arcadeDrive(0, 0);

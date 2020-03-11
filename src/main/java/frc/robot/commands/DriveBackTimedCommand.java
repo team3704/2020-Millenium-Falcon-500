@@ -13,11 +13,11 @@ import frc.robot.Robot;
 /**
  * Add your docs here.
  */
-public class DriveForwardTimedCommand extends TimedCommand {
+public class DriveBackTimedCommand extends TimedCommand {
   /**
    * Add your docs here.
    */
-  public DriveForwardTimedCommand(double timeout) {
+  public DriveBackTimedCommand(double timeout) {
     super(timeout);
     // Use requires() here to declare subsystem dependencies
     requires(Robot.arcadeDriveSubsystem);
@@ -27,7 +27,7 @@ public class DriveForwardTimedCommand extends TimedCommand {
   @Override
   protected void initialize() {
     System.out.println("Entered auton drive " + System.currentTimeMillis());
-    Robot.arcadeDriveSubsystem.autonArcadeDrive(0.30, 0, false);
+    Robot.arcadeDriveSubsystem.autonArcadeDrive(-0.30, 0, false);
   }
 
   // Called repeatedly when this Command is scheduled to run
