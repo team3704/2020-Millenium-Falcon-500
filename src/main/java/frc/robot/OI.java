@@ -57,10 +57,7 @@ public class OI {
   public JoystickButton buttonStickRight; //port10 
   public JoystickButton buttonBack;       //port 7
   public JoystickButton buttonStart;      //port 8
-  public JoystickButton buttonDPad_Left;  //port10
-  //public JoystickButton buttonDPad_Right; //port12
-  //public JoystickButton buttonDPad_Up;    //port13
-  //public JoystickButton buttonDPad_Down;  //port14
+
 
   //Xbox Triggers
   public XboxTrigger rhTrigger;           //port 3
@@ -113,8 +110,8 @@ public class OI {
       buttonStart = new JoystickButton(xbox, 8);
       buttonStart.whileHeld(new WinchClimbCommand());
 
-      buttonDPad_Left = new JoystickButton(xbox, 10);
-      buttonDPad_Left.whileHeld(new LoaderReverseCommand());
+      buttonStickLeft = new JoystickButton(xbox, 9);
+      buttonStickLeft.whileHeld(new LoaderReverseCommand());
 
       this.rhTrigger = new XboxTrigger(this.xboxtriggers, Hand.kRight);
       this.rhTrigger.whileActive(new ShooterCommandGroup());
